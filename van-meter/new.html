@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="styles/layout.css">
   <link rel="stylesheet" href="styles/modules.css">
   <!-- NOTE (stretch goal): To fully incorporate the highlighting library "hljs" we need to fill the empty link tag below to refer to a CSS file that will handle our text highlighting -->
-  <link>
+  <link rel="stylsheet" href="styles/default.css">
   <!-- TODO: We want our new article form to be able to display a preview of the article that is being entered. Thus, we need code here that will recreate the same structure of our other articles. What do you think we need to add here? -->  <!--handlebar template-->
   <script id="article-template" type="text/x-handlebars-template">
     <article class="clearfix" data-author="{{author}}" data-category="{{category}}">
@@ -113,7 +113,7 @@
     //  Hint: Look in articleView.js for a function that does this.
     articleView.initNewArticlePage();
     // COMMENT: What is this function doing? Why do we need it?
-    // PUT YOUR RESPONSE HERE
+    // loading up and making sure the page is loaded before the javascript.
   </script>
 </body>
 

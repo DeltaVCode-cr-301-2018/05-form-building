@@ -75,10 +75,10 @@ articleView.setTeasers = () => {
 };
 
 // COMMENT: Where is this function called? Why?
-// called in the new html page.
+// calls in the new html page in order for the new pages to pop in.
 articleView.initNewArticlePage = () => {
   // TODO: Ensure the main .tab-content area is revealed. We might add more tabs later or otherwise edit the tab navigation.
-  $('nav .tab(data-content="write")').click();
+  $('nav .tab[data-content="write"]').click();
 
   // TODO: The new articles we create will be copy/pasted into our source data file.
   // Set up this "export" functionality. We can hide it for now, and show it once we have data to export.
@@ -91,7 +91,7 @@ articleView.initNewArticlePage = () => {
 
   // TODO: Add an event handler to update the preview and the export field if any inputs change.
 
-  $('new-form').on('change', articleView.create);
+  $('#new-form').on('change' , articleView.create);
 
 };
 
@@ -103,34 +103,32 @@ articleView.create = () => {
   articleDataObj.body = $('#article-body').val();
   articleDataObj.author = $('#article-author').val();
   articleDataObj.authorUrl = $('#article-author-url').val();
-  articleDataObj.caegory = $('#article-category').val();
+  articleDataObj.category = $('#article-category').val();
 
   var today = new Date();
-//TODO: show yyy-MM-dd instead of YYY-m-d
-  var dateString = `${today.getFUllYear()}-${today.getMonth() + 1}-${today.getDate()}`;
+  var dateString = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
 
-  articleDataObj.publisehdOn = $('#article-published').is(':checked') ? dateString : null;
+  articleDataObj.publishedOn = $('#article-published').is(':checked') ? dateString : null;
 
   // TODO: Use our interface to the Handblebars template to put this new article into the DOM:
   // but first, Clear out the #articles element, so we can put in the updated preview
 
-  $('#articles').empty().append(article.toHtml());
+  let article = new Article(articleDataObj);
 
   // TODO: Instantiate an article based on what's in the form fields:
 
-  let article = new Article(articleDataObj);
-
+  $('#articles').empty().append(article.toHtml());
 
   // TODO: Activate the highlighting of any code blocks; look at the documentation for hljs to see how to do this by placing a callback function in the .each():
   $('pre code').each();
 
   // TODO: Show our export field, and export the new article as JSON, so it's ready to copy/paste into blogArticles.js:
-  $('#artice-export').show();
+  $('#article-export').show();
   $('#article-json').val(JSON.stringify(articleDataObj) + ',');
 };
 
 // COMMENT: Where is this function called? Why?
-// PUT YOUR RESPONSE HERE
+// in the html. so it pops in the page after loadup.
 articleView.initIndexPage = () => {
   articles.forEach(article => $('#articles').append(article.toHtml()));
   articleView.populateFilters();
