@@ -96,7 +96,7 @@ articleView.create = () => {
   articleDataObj.title = $('#article-title').val();
   articleDataObj.body = $('#article-body').val();
   articleDataObj.author = $('#article-author').val();
-  articleDataObj.url = $('#article-author-url').val();
+  articleDataObj.authorUrl = $('#article-author-url').val();
   articleDataObj.category = $('#article-category').val();
 
   var today = new Date();
