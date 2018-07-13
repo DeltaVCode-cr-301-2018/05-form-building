@@ -11,8 +11,21 @@
   <link rel="stylesheet" href="styles/layout.css">
   <link rel="stylesheet" href="styles/modules.css">
   <!-- NOTE (stretch goal): To fully incorporate the highlighting library "hljs" we need to fill the empty link tag below to refer to a CSS file that will handle our text highlighting -->
-  <link>
-  <!-- TODO: We want our new article form to be able to display a preview of the article that is being entered. Thus, we need code here that will recreate the same structure of our other articles. What do you think we need to add here? -->
+  <link rel="stylsheet" href="styles/default.css">
+  <!-- TODO: We want our new article form to be able to display a preview of the article that is being entered. Thus, we need code here that will recreate the same structure of our other articles. What do you think we need to add here? -->  <!--handlebar template-->
+  <script id="article-template" type="text/x-handlebars-template">
+    <article class="clearfix" data-author="{{author}}" data-category="{{category}}">
+      <header>
+        <h1>{{title}}</h1>
+        <div>
+          By <address><a href="{{authorUrl}}">{{author}}</a></address>
+          {{publishStatus}}
+        </div>
+      </header>
+      <section class="article-body">{{{body}}}</section>
+      <a href="#" class="read-on">Read on &rarr;</a>
+    </article>
+  </script>
 </head>
 
 <body>
@@ -77,6 +90,10 @@
         and also be clickable to allow easy selection of the text it holds.
         What kind of element could we use for this?
       -->
+      <label class="pull-right"> <!-- class used to pull to the right of the page-->
+        <input id="article-json" readonly />
+        Copy this into <code>blogArticles.js</code> to save.
+      </label>
     </section>
 
   </main>
@@ -94,9 +111,9 @@
     // TODO: We will need to call a function here to initialize the behaviors on this page, once we get them built out. Why?
     // (Look at the bottom of index.html as a reference. Since we are now using our JS on two different HTML pages that have different needs as to what parts of the code they utilize, we need to build a function that inializes each page.)
     //  Hint: Look in articleView.js for a function that does this.
-
+    articleView.initNewArticlePage();
     // COMMENT: What is this function doing? Why do we need it?
-    // PUT YOUR RESPONSE HERE
+    // loading up and making sure the page is loaded before the javascript.
   </script>
 </body>
 
